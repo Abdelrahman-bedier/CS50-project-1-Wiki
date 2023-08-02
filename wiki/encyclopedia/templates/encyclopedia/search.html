@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search results
+{% endblock %}
+
+{% block body %}
+
+    {% if valid_entries|length == 0 %}
+        <h1>No Search Results for <b>{{ title }} </b> </h1>
+    {% else %}
+        <h1>Search Results for <b>{{ title }} </b> </h1>
+    {% endif %}
+    <ul>
+        {% for entry in valid_entries %}
+            <li>
+                <a href="{% url 'encyclopedia:entry' entry %}">{{ entry }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

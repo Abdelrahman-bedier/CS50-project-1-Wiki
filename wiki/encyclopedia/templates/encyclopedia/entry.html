@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{% if entry_flag %}
+    {{ title|title }}
+{% else %}
+    {{ title|title }} not found!
+{% endif %}
+
+{% endblock %}
+
+{% block body %}
+
+{% if entry_flag %}
+    {{ entry |safe}}
+{% else %}
+    Requested page was not found
+{% endif %}
+
+<form action="{% url 'encyclopedia:edit' title %}">
+    <input type="submit" value="Edit" id="edit_page">
+</form>
+
+{% endblock %}
+
+
+
